@@ -5,7 +5,7 @@ export default class QuizModel {
   #id: number
   #question: string
   #answers: AnswerModel[]
-  #gotRight?: boolean
+  #gotRight: boolean
 
   constructor(
     id: number, question: string, 
@@ -47,11 +47,11 @@ export default class QuizModel {
   }
 
   answeredWith(index: number): QuizModel {
-    const gotRight = this.#answers[index].right
+    const gotRight = this.#answers[index]?.right
     const answers:any = this.#answers.map((answer, i) => {
-      const selectedAnswer = index === i
-      const shouldReveal = selectedAnswer || answer.right
-      return shouldReveal ? answer.reveal : answer
+      const selected = index === i
+      const shouldReveal = selected || answer.right
+      return shouldReveal ? answer.reveal() : answer
     })
 
     return new QuizModel(this.id, this.question, answers, gotRight)
@@ -63,12 +63,12 @@ export default class QuizModel {
   }
 
   toObject(){
-    console.log('Answers-tp', this.#answers[0].toObject())
     return {
       id: this.#id,
       question: this.#question,
+      answered: this.answered,
       gotRight: this.#gotRight,
-      answers: this.#answers.map( answer => answer)
+      answers: this.#answers.map( answer => answer.toObject()),
       
     }
   }

@@ -7,5 +7,5 @@ export default function quiz (
   res: NextApiResponse
 ) {
   const questionsId = questions.map(question => question.id)
- res.status(200).json(shuffle(questionsId))
+  res.status(200).json(shuffle(questionsId))
 }

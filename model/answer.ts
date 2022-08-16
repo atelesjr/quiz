@@ -5,7 +5,7 @@ export default class AnswerModel {
   #revealed?: boolean
 
   constructor(
-    value: string, right: boolean, revealed?: boolean,
+    value: string, right: boolean, revealed: boolean = false,
   ) {
     this.#value = value
     this.#right = right
