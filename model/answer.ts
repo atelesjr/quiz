@@ -36,6 +36,10 @@ export default class AnswerModel {
     return new AnswerModel(this.#value, this.#right, true)
   }
 
+  static crreateFromObj(obj:AnswerModel):AnswerModel {
+    return new AnswerModel(obj.value, obj.right, obj.revealed)
+  }
+
   toObject() {
     return {
       value: this.#value,
