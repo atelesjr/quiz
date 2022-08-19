@@ -56,7 +56,7 @@ const Home: NextPage = () => {
 
   const finnish = () => {
     router.push({
-      pathname: '/result',
+      pathname: '/Result',
       query: {
         total: +questionsIds.length,
         rightAnswers: +righAnswers
